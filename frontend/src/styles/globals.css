@@ -1,0 +1,37 @@
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f5f7fa;
+}
+
+.compose-container {
+  width: 400px;
+  margin: 20px auto;
+  background: white;
+  padding: 20px;
+  box-shadow: 0 0 10px #ddd;
+  border-radius: 8px;
+}
+
+.compose-container input,
+.compose-container textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.compose-container button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+.hyperos-bg {
+  background: linear-gradient(135deg, #f0f4ff, #fff0f7);
+  color: #1a1a1a;
+  min-height: 100vh;
+  transition: background 0.4s ease-in-out;
+  font-family: "Poppins", sans-serif;
+}

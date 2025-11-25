@@ -1,0 +1,127 @@
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f3f4f6;
+  padding: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 200px;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.sidebar-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.menu li {
+  list-style: none;
+  margin: 10px 0;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.menu li:hover {
+  color: #0073e6;
+}
+
+/* Chat Window */
+.chat-window {
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.user-email {
+  margin-bottom: 10px;
+  color: #555;
+  font-weight: bold;
+}
+
+.email-preview {
+  height: 20px;
+  margin: 10px 0;
+  background: #e0e0e0;
+  border-radius: 8px;
+}
+
+.shimmer {
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-color: #e0e0e0; }
+  50% { background-color: #f0f0f0; }
+  100% { background-color: #e0e0e0; }
+}
+
+.reply-box {
+  display: flex;
+  margin-top: 20px;
+  gap: 8px;
+}
+
+.reply-box input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 24px;
+  border: 1px solid #ccc;
+}
+
+.reply-box button {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: #0073e6;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Composer */
+.composer {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+.composer h2 {
+  margin-bottom: 15px;
+}
+
+.composer input,
+.composer textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.composer button {
+  background: #0073e6;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}

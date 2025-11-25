@@ -1,0 +1,512 @@
+/* src/components/ComposeMail.css */
+
+.app-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align content to the top */
+    min-height: 100vh; /* Ensure it takes full viewport height */
+    padding-top: 20px; /* Add some padding from the top */
+}
+
+.main-content-area {
+    width: 100%;
+    max-width: 1200px; /* Adjust max-width as needed */
+    padding: 0 20px; /* Add horizontal padding */
+    box-sizing: border-box;
+}
+
+.compose-with-recent-panel {
+    display: flex; /* Use flexbox to lay out children side-by-side */
+    gap: 20px; /* Space between the recent and compose sections */
+    align-items: flex-start; /* Align items to the top */
+    width: 100%;
+}
+
+.recent-panel {
+    flex-shrink: 0; /* Prevent it from shrinking */
+    width: 300px; /* Increased width to accommodate full email without scrolling */
+    background-color: var(--background-light); /* Using global variable */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Adjusted shadow */
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: background-color 0.3s ease;
+}
+
+/* Dark mode for recent-panel */
+body.dark .recent-panel {
+    background-color: var(--background-dark); /* Using global variable */
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.04); /* Dark mode shadow */
+}
+
+
+.recent-panel h4 {
+    color: var(--text-light); /* Using global variable */
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Dark mode for recent-panel h4 */
+body.dark .recent-panel h4 {
+    color: var(--text-dark); /* Using global variable */
+}
+
+.recent-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-light); /* Using global variable */
+    font-size: 0.9rem;
+    padding: 8px 0;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    word-break: break-word; /* Ensure long emails wrap */
+}
+
+/* Dark mode for recent-item */
+body.dark .recent-item {
+    color: var(--text-dark); /* Using global variable */
+}
+
+.recent-item:hover {
+    background-color: rgba(0, 0, 0, 0.05); /* Light hover effect */
+}
+
+body.dark .recent-item:hover {
+    background-color: rgba(255, 255, 255, 0.05); /* Dark hover effect */
+}
+
+.recent-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.compose-mail-container {
+    flex-grow: 1; /* Allow it to take remaining space */
+    min-width: 500px; /* Minimum width for the compose section */
+    background-color: var(--background-light); /* Using global variable */
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); /* Adjusted shadow */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Ensures content within does not overflow */
+    max-height: 80vh; /* Limit height if content is too long */
+    transition: background-color 0.3s ease;
+}
+
+/* Dark mode for compose-mail-container */
+body.dark .compose-mail-container {
+    background-color: var(--background-dark); /* Using global variable */
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.04); /* Dark mode shadow */
+}
+
+.compose-mail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background-color: var(--background-light); /* Using global variable */
+    border-bottom: 1px solid var(--input-border-light); /* Using global variable */
+    color: var(--text-light); /* Using global variable */
+}
+
+body.dark .compose-mail-header {
+    background-color: var(--background-dark); /* Using global variable */
+    border-bottom-color: var(--input-border-dark); /* Using global variable */
+    color: var(--text-dark); /* Using global variable */
+}
+
+.header-title {
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.header-actions .icon-button {
+    background: none;
+    border: none;
+    color: var(--text-light); /* Using global variable */
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 5px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+body.dark .header-actions .icon-button {
+    color: var(--text-dark); /* Using global variable */
+}
+
+.header-actions .icon-button:hover {
+    background-color: rgba(0, 0, 0, 0.08); /* Light hover effect */
+}
+
+body.dark .header-actions .icon-button:hover {
+    background-color: rgba(255, 255, 255, 0.08); /* Dark hover effect */
+}
+
+.compose-mail-body {
+    flex-grow: 1;
+    padding: 0 20px; /* Padding for input rows and message area */
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Enable vertical scrolling for the body if content overflows */
+}
+
+.input-row {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--input-border-light); /* Using global variable */
+}
+
+body.dark .input-row {
+    border-bottom-color: var(--input-border-dark); /* Using global variable */
+}
+
+.input-row.border-bottom:last-of-type {
+    border-bottom: none; /* Remove bottom border for the last input row */
+}
+
+/* StyledInputWrapper and its children styles */
+.wave-group {
+    position: relative;
+    width: 100%;
+}
+.wave-group .input {
+    font-size: 16px;
+    padding: 20px 10px 6px 10px;
+    transform: translateY(0px);
+    display: block;
+    width: calc(100% - 20px); /* Adjust width considering padding */
+    border: none;
+    background: transparent;
+    color: var(--text-light); /* Using global variable */
+}
+body.dark .wave-group .input {
+    color: var(--text-dark); /* Using global variable */
+}
+.wave-group .input:focus {
+    outline: none;
+}
+.wave-group .label {
+    color: var(--text-light); /* Using global variable */
+    font-size: 0.85rem;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    display: flex;
+}
+body.dark .wave-group .label {
+    color: var(--text-dark); /* Using global variable */
+}
+
+.wave-group .label-char {
+    transition: 0.2s ease all;
+    transition-delay: calc(var(--index) * 0.05s);
+}
+.wave-group .input:focus ~ label .label-char,
+.wave-group .input:valid ~ label .label-char {
+    transform: translateY(-20px);
+    font-size: 14px;
+    color: var(--primary-color); /* Using global variable */
+}
+.wave-group .bar {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+.wave-group .bar:before,
+.wave-group .bar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: var(--primary-color); /* Using global variable */
+    transition: 0.2s ease all;
+}
+.wave-group .bar:before {
+    left: 50%;
+}
+.wave-group .bar:after {
+    right: 50%;
+}
+.wave-group .input:focus ~ .bar:before,
+.wave-group .input:focus ~ .bar:after {
+    width: 50%;
+}
+
+.cc-bcc-options {
+    display: flex;
+    gap: 15px;
+    margin-left: auto;
+    font-size: 0.8rem;
+    color: var(--primary-color); /* Using global variable */
+    cursor: pointer;
+}
+
+.message-area {
+    flex-grow: 1; /* Allow textarea to take available space */
+    padding: 15px 0; /* Adjust padding as needed */
+}
+
+.message-textarea {
+    width: 100%;
+    height: 100%; /* Take full height of its parent */
+    border: none;
+    resize: none; /* Disable manual resizing */
+    font-size: 1rem;
+    color: var(--text-light); /* Using global variable */
+    background-color: transparent;
+    padding: 0; /* Remove default padding */
+    box-sizing: border-box;
+    font-family: inherit; /* Inherit font family */
+}
+
+body.dark .message-textarea {
+    color: var(--text-dark); /* Using global variable */
+}
+
+.message-textarea:focus {
+    outline: none;
+}
+
+.attachment-chips-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--input-border-light); /* Using global variable */
+}
+
+body.dark .attachment-chips-container {
+    border-bottom-color: var(--input-border-dark); /* Using global variable */
+}
+
+.attachment-chip {
+    display: flex;
+    align-items: center;
+    background-color: #e0e0e0; /* Fallback for chip background */
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--text-light); /* Using global variable */
+}
+
+body.dark .attachment-chip {
+    background-color: #555; /* Dark mode chip background */
+    color: var(--text-dark); /* Using global variable */
+}
+
+.remove-attachment {
+    background: none;
+    border: none;
+    color: var(--text-light); /* Using global variable */
+    margin-left: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+body.dark .remove-attachment {
+    color: var(--text-dark); /* Using global variable */
+}
+
+.emoji-picker-container {
+    padding-top: 10px;
+    border-top: 1px solid var(--input-border-light); /* Using global variable */
+    display: flex;
+    justify-content: center; /* Center the emoji picker */
+}
+
+body.dark .emoji-picker-container {
+    border-top-color: var(--input-border-dark); /* Using global variable */
+}
+
+.compose-mail-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--background-light); /* Using global variable */
+    border-top: 1px solid var(--input-border-light); /* Using global variable */
+}
+
+body.dark .compose-mail-footer {
+    background-color: var(--background-dark); /* Using global variable */
+    border-top-color: var(--input-border-dark); /* Using global variable */
+}
+
+.toolbar-icons, .footer-right-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.toolbar-icons .icon-button, .footer-right-icons .icon-button {
+    background: none;
+    border: none;
+    color: var(--text-light); /* Using global variable */
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    display: flex; /* For proper icon alignment */
+    align-items: center;
+    justify-content: center;
+}
+
+body.dark .toolbar-icons .icon-button,
+body.dark .footer-right-icons .icon-button {
+    color: var(--text-dark); /* Using global variable */
+}
+
+.toolbar-icons .icon-button:hover, .footer-right-icons .icon-button:hover {
+    background-color: rgba(0, 0, 0, 0.08); /* Light hover effect */
+}
+
+body.dark .toolbar-icons .icon-button:hover,
+body.dark .footer-right-icons .icon-button:hover {
+    background-color: rgba(255, 255, 255, 0.08); /* Dark hover effect */
+}
+
+.custom-attach-icon {
+    width: 20px;
+    height: 20px;
+    filter: invert(0%); /* Default to no filter for light mode */
+}
+
+body.dark .custom-attach-icon {
+    filter: invert(100%); /* Example: Invert colors for dark mode */
+}
+
+/* Button Component styles (assuming a class for your Button component) */
+/* The Button component likely has its own styling. Ensure it uses global CSS variables like --primary-color. */
+/* For example, if your Button component uses a .button class: */
+.button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0056b3; /* Darker shade of primary-color */
+}
+
+body.dark .button {
+    background-color: #3399ff; /* Adjusted for dark mode, still using primary-color logic */
+}
+
+body.dark .button:hover {
+    background-color: #227acc;
+}
+
+
+/* Link Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.link-modal {
+    background-color: var(--background-light); /* Using global variable */
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: var(--text-light); /* Using global variable */
+}
+
+body.dark .link-modal {
+    background-color: var(--background-dark); /* Using global variable */
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.04);
+    color: var(--text-dark); /* Using global variable */
+}
+
+.link-modal h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: inherit; /* Inherit text color from parent */
+}
+
+.link-modal input {
+    padding: 10px;
+    border: 1px solid var(--input-border-light); /* Using global variable */
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: var(--input-bg-light); /* Using global variable */
+    color: var(--text-light); /* Using global variable */
+}
+
+body.dark .link-modal input {
+    border-color: var(--input-border-dark); /* Using global variable */
+    background-color: var(--input-bg-dark); /* Using global variable */
+    color: var(--text-dark); /* Using global variable */
+}
+
+.link-modal input:focus {
+    outline: none;
+    border-color: var(--primary-color); /* Using global variable */
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.modal-actions button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.modal-actions .cancel-button {
+    background-color: #e0e0e0; /* Light mode default */
+    color: var(--text-light); /* Using global variable */
+}
+
+body.dark .modal-actions .cancel-button {
+    background-color: #555; /* Dark mode default */
+    color: var(--text-dark); /* Using global variable */
+}
+
+.modal-actions .insert-button {
+    background-color: var(--primary-color); /* Using global variable */
+    color: white;
+}
+
+body.dark .modal-actions .insert-button:hover {
+    background-color: #227acc; /* Dark mode hover for primary button */
+}

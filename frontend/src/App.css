@@ -1,0 +1,327 @@
+/* App.css */
+:root {
+  --font: 'Poppins', sans-serif;
+}
+.App {
+  text-align: center;
+  padding: 40px 20px;
+  transition: background 0.5s ease, color 0.5s ease;
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: var(--font);
+  display: flex;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  margin-left: -25px; /* space for nav bar */
+}
+
+.toggle-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  overflow: hidden;
+  background-color: #044d4d;
+  color: white;
+  padding: 14px 26px; /* Bigger button */
+  font-size: 1.2rem;   /* Slightly larger icon/text */
+  border: none;
+  border-radius: 28px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: var(--font);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+
+
+.toggle-btn::after {
+  content: "";
+  position: absolute;
+  background: rgba(255, 255, 255, 0.3);
+  width: 100px;
+  height: 100px;
+  top: -50%;
+  left: -50%;
+  transform: scale(0);
+  border-radius: 50%;
+  pointer-events: none;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.toggle-btn:active::after {
+  transform: scale(2.5);
+  opacity: 0;
+}
+
+/* Wipe overlay */
+.wipe-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  pointer-events: none;
+  background: linear-gradient(to right, var(--bg) 0%, var(--bg) 80%, transparent 100%);
+  z-index: 999;
+  transition: none;
+}
+
+.wipe-transition.start {
+  transition: width 0.5s ease;
+  width: 100%;
+}
+
+/* Fade-out during wipe */
+.fade-text {
+  transition: opacity 0.5s ease;
+}
+.wipe-transition.start ~ .fade-text {
+  opacity: 0.3;
+}
+
+h1, p {
+  font-family: 'Poppins', sans-serif;
+}
+.google-icon {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.pill-button {
+position: relative;
+width: 56px; /* fixed collapsed width */
+height: 48px;
+border-radius: 999px;
+background-color: var(--nav-surface, #ffffff);
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+display: flex;
+align-items: center;
+justify-content: center;
+transition: background-color 0.25s ease, box-shadow 0.3s ease;
+cursor: pointer;
+overflow: visible;
+}
+
+.pill-icon {
+width: 24px;
+height: 24px;
+
+}
+
+.pill-label {
+position: absolute;
+left: 56px;
+background-color: inherit;
+padding: 6px 12px;
+border-radius: 999px;
+white-space: nowrap;
+font-size: 15px;
+font-weight: 500;
+color: var(--text-primary, #1c1b1f);
+opacity: 0;
+transform: translateX(-10px);
+transition: opacity 0.3s ease, transform 0.3s ease;
+pointer-events: none;
+z-index: 5;
+}
+
+.pill-button:hover .pill-label {
+opacity: 1;
+transform: translateX(0);
+}
+
+.pill-button.active {
+background-color: #e8f0fe;
+}
+
+.pill-button.active .pill-label {
+color: #1967d2;
+font-weight: 600;
+}
+
+.dark .pill-button {
+background-color: #212121;
+}
+
+.dark .pill-label {
+color: #eee;
+background-color: #2b2b2b;
+}
+
+/* Meet Button shared style */
+.meet-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    background: none;
+    border: none;
+    padding: 10px 14px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #1967d2;
+    cursor: pointer;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+    border-radius: 16px;
+    width: 100%;
+    text-align: left;
+}
+
+.meet-button:hover {
+    background-color: rgba(25, 103, 210, 0.08);
+    opacity: 0.9;
+}
+
+/* Icon styles for consistent alignment */
+.inbox-icon,
+.compose-icon
+ {
+    width: 25px;
+    height: 20px;
+    vertical-align: middle;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.15));
+}
+.meet-icon {
+    width: 25px;
+    height: 20px;
+    vertical-align: middle;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.15));
+}
+.mail-icon {
+width: 34px;
+height: 34px;
+}
+.account-switcher {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.account-button {
+  display: flex;
+  align-items: center;
+  background-color: var(--nav-surface, #ffffff00);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border-radius: 30px;
+  border-color: #aeb6b6;
+  
+  cursor: pointer;
+  transform: translateX(-100px) translateY(15px);
+}
+.dark .account-button {
+background-color: #212121;
+}
+
+.account-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.account-arrow {
+  margin-left: 6px;
+  font-size: 14px;
+}
+
+
+
+.account-dropdown {
+position: absolute;
+top: 45px;
+right: 0;
+background: rgba(255, 255, 255, 0.25);
+backdrop-filter: blur(12px);
+border: 2px solid #c7aeae;
+border-radius: 30px;
+padding: 10px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+min-width: 240px;
+z-index: 999;
+color: var(--text-primary);
+transform-origin: top center;
+animation: zoomDrop 0.35s ease-out forwards;
+opacity: 0;
+transform: translateX(-95px) translateY(16px); /* Final shift */
+}
+
+@keyframes zoomDrop {
+0% {
+transform: scale(0.4) translate(0px, -20px);
+opacity: 0;
+}
+100% {
+transform: scale(1) translate(-95px, 16px); /* 50px left */
+opacity: 1;
+}
+}
+
+.dark .account-dropdown {
+background: rgba(33, 33, 33, 0.6);
+color: var(--text-primary);
+border: 2px solid #444;
+}
+
+.dark .account-dropdown .account-option,
+.dark .account-dropdown .acc-name,
+.dark .account-dropdown .acc-email {
+color: white !important;
+}
+
+
+.account-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+color: var(--text-primary);
+}
+
+.account-item:hover {
+  background-color: #dcc9c958;
+  border-radius: 20px;
+}
+
+.account-info {
+  display: flex;
+  flex-direction: column;
+}
+.arrow {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.arrow.rotate {
+  transform: rotate(180deg);
+}
+
+.dark .arrow {
+  filter: invert(1); /* Turns black arrow white */
+}
+.user-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background-color: rgba(211, 153, 153, 0.123);
+  border: 2px solid #c7aeae;
+  border-radius: 999px; /* pill shape */
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.pill-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}

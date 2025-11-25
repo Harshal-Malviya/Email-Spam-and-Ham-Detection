@@ -1,0 +1,37 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.gmail-login-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  background: var(--card-bg);
+  color: var(--text);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow:
+    4px 4px 8px rgba(0, 0, 0, 0.1),
+    -4px -4px 8px rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+  font-family: var(--font);
+}
+
+.gmail-login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    6px 6px 12px rgba(0, 0, 0, 0.15),
+    -6px -6px 12px rgba(255, 255, 255, 0.6);
+}
+
+.gmail-login-btn img {
+  width: 20px;
+  height: 20px;
+}

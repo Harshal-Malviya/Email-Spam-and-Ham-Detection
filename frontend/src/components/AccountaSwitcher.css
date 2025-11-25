@@ -1,0 +1,101 @@
+.account-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  position: relative;
+}
+
+.account-box {
+  display: flex;
+  align-items: center;
+  border: 2px solid transparent;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #fff;
+  cursor: pointer;
+  gap: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+}
+
+.account-box.active {
+  border-color: #d93025;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.google-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.email-text {
+  font-weight: 500;
+  color: #202124;
+  font-family: "Google Sans", sans-serif;
+}
+
+.arrow-icon {
+  transition: transform 0.3s ease;
+  color: #5f6368;
+}
+
+.arrow-icon.rotate {
+  transform: rotate(180deg);
+}
+
+.account-dropdown {
+  position: absolute;
+  top: 60px;
+  width: 320px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+  overflow: hidden;
+  z-index: 10;
+  animation: fadeDrop 0.3s ease;
+}
+
+@keyframes fadeDrop {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.account-option {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  gap: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.account-option:hover {
+  background-color: #f1f3f4;
+}
+
+.account-option.selected {
+  background-color: #e8f0fe;
+}
+
+.acc-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.acc-email {
+  font-size: 13px;
+  color: #555;
+}
+
+.check-icon {
+  margin-left: auto;
+  color: #1967d2;
+}

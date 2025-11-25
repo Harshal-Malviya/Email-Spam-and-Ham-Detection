@@ -1,0 +1,100 @@
+.recent-emails-container {
+  width: 300px; /* Fixed width for the recent emails section */
+  background-color: #ffffff;
+  border-right: 1px solid #e8eaed;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border-radius: 16px; /* Apply rounded corners to the container itself */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1); /* Consistent shadow */
+  min-height: 400px; /* Match min-height of compose mail */
+  overflow: hidden; /* Hide overflow if content exceeds */
+}
+
+.recent-emails-container h3 {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #3c4043;
+  margin-top: 0;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e8eaed;
+}
+
+.recent-emails-list {
+  flex-grow: 1;
+  overflow-y: auto; /* Enable scrolling for the list of emails */
+  padding-right: 5px; /* Space for scrollbar */
+}
+
+/* Custom scrollbar for webkit browsers */
+.recent-emails-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.recent-emails-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.recent-emails-list::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.recent-emails-list::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+.recent-email-item {
+  padding: 10px 15px;
+  margin-bottom: 8px;
+  background-color: #f8f9fa; /* Slightly off-white for items */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid #e0e0e0; /* Subtle border */
+}
+
+.recent-email-item:hover {
+  background-color: #e8f0fe;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.email-subject {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #3c4043;
+  margin: 0 0 5px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.email-to {
+  font-size: 0.8rem;
+  color: #5f6368;
+  margin: 0 0 5px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.email-timestamp {
+  font-size: 0.7rem;
+  color: #70757a;
+  display: block;
+  text-align: right;
+}
+
+.no-emails-message {
+  color: #70757a;
+  text-align: center;
+  padding: 20px;
+  font-style: italic;
+}

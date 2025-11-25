@@ -1,0 +1,111 @@
+body {
+margin: 0;
+font-family: 'Poppins', sans-serif;
+background-color: #f5f7fa;
+color: #1a1a1a;
+transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode support */
+body.dark {
+background-color: #121212;
+color: #f5f5f5;
+--text-primary: #ffffff;
+}
+
+/* Light and dark theme variable support */
+:root {
+  color: var(--text-primary, #ffffff);
+--background-light: #ffffff;
+--background-dark: #1f1f1f;
+--text-light: #1a1a1a;
+--text-dark: #f5f5f5;
+--input-bg-light: #fefefe;
+--input-bg-dark: #2a2a2a;
+--input-border-light: #ccc;
+--input-border-dark: #444;
+--primary-color: #007bff;
+}
+
+/* Compose Container */
+.compose-container {
+width: 420px;
+margin: 40px auto;
+background: var(--background-light);
+padding: 24px 28px;
+border-radius: 18px;
+box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+transition: background-color 0.3s ease, color 0.3s ease;
+color: var(--text-light);
+}
+
+body.dark .compose-container {
+background: var(--background-dark);
+color: var(--text-dark);
+box-shadow: 0 8px 24px rgba(255, 255, 255, 0.04);
+}
+
+/* Inputs & Textareas */
+.compose-container input:not(.form__field),
+.compose-container textarea:not(.form__field) {
+width: 100%;
+margin-bottom: 16px;
+padding: 12px 14px;
+border: 1px solid var(--input-border-light);
+border-radius: 10px;
+font-size: 0.95rem;
+font-family: inherit;
+background-color: var(--input-bg-light);
+color: var(--text-light);
+transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+body.dark .compose-container input,
+body.dark .compose-container textarea {
+
+border-color: var(--input-border-dark);
+color: var(--text-dark);
+}
+
+/* Placeholders */
+.compose-container input::placeholder,
+.compose-container textarea::placeholder {
+color: #888;
+}
+
+body.dark .compose-container input::placeholder,
+body.dark .compose-container textarea::placeholder {
+color: #aaa;
+}
+
+/* Focus styles */
+.compose-container input:focus,
+.compose-container textarea:focus {
+border-color: var(--primary-color);
+outline: none;
+}
+
+/* Button Styles */
+.compose-container button {
+background: var(--primary-color);
+color: white;
+border: none;
+padding: 12px 18px;
+border-radius: 12px;
+cursor: pointer;
+font-weight: 500;
+font-size: 0.95rem;
+transition: background-color 0.3s ease;
+}
+
+.compose-container button:hover {
+background-color: #0056b3;
+}
+
+body.dark .compose-container button {
+background-color: #3399ff;
+}
+
+body.dark .compose-container button:hover {
+background-color: #227acc;
+}

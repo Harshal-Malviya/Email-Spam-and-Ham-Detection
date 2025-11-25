@@ -1,0 +1,741 @@
+.inbox-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inbox-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 0 1rem;
+  width: -webkit-fill-available;
+  width: stretch;
+}
+
+.mail2-icon {
+  width: 50px;
+  height: 50px;
+  transform: translateY(12px);
+}
+
+.refresh-button {
+  background-color: rgb(255, 255, 255);
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 18px;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.08);
+  width: 38px;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.dark .refresh-button {
+  background-color: rgba(85, 85, 85, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.refresh-button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 1px 3px 1px rgba(60, 64, 67, 0.1);
+  width: 100px;
+  gap: 4px;
+  justify-content: flex-start;
+  padding-right: 12px;
+}
+
+.dark .refresh-button:hover {
+  background-color: rgba(85, 85, 85, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+}
+
+.refresh-button.loading {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #9aa0a6;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: not-allowed;
+  box-shadow: none;
+  width: 120px;
+  justify-content: flex-start;
+  gap: 4px;
+  padding-right: 12px;
+}
+
+.dark .refresh-button.loading {
+  background-color: rgba(51, 51, 51, 0.2);
+  color: #bbb;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.refresh-button:disabled {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #9aa0a6;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.dark .refresh-button:disabled {
+  background-color: rgba(33, 33, 33, 0.1);
+  color: #777;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.refresh-icon-img {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  object-fit: contain;
+  transition: transform 0.3s ease-in-out;
+  filter: invert(0);
+}
+
+.dark .refresh-icon-img {
+  filter: invert(1);
+}
+
+.refresh-button.loading .refresh-icon-img {
+  animation: spin 1s linear infinite;
+}
+
+.refresh-label {
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.refresh-button:hover .refresh-label,
+.refresh-button.loading .refresh-label {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.email-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+  max-height: 600px;
+  width: 100%;
+  max-width: 800px;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.email-card {
+  display: flex;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+  padding: 1rem;
+  border-radius: 16px;
+  transition: all 0.3s ease-in-out;
+  gap: 1rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.email-card:hover {
+  transform: scale(1.01);
+  box-shadow: 0 10px 36px rgba(31, 38, 135, 0.3);
+}
+
+.email-snippet-container {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.4s ease;
+}
+
+.email-card.expanded .email-snippet-container {
+  max-height: 300px;
+  opacity: 1;
+  margin-top: 6px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  background-color: #4285f4;
+  color: #fff;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.email-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
+.email-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.sender-line {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
+  position: relative;
+}
+
+.sender-name {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.sender-email {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-left: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.timestamp-bottom-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font: 0px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.email-subject {
+  font-weight: 500;
+  font-size: 1rem;
+  margin: 6px 0;
+  color: var(--text-primary);
+}
+
+.email-snippet {
+  font-size: 0.95rem;
+  color: var(--text-body);
+}
+
+.skeleton {
+  animation: shimmer 1.6s infinite linear;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-size: 1000px 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.skeleton-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-right: 12px;
+}
+
+.skeleton-line {
+  height: 10px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  background-color: #ccc;
+}
+
+.skeleton-line.short { width: 30%; }
+.skeleton-line.medium { width: 50%; }
+.skeleton-line.long { width: 80%; }
+
+body.dark .skeleton {
+  background: linear-gradient(to right, #2a2a2a 8%, #333 18%, #2a2a2a 33%);
+}
+
+body.dark .skeleton-line {
+  background-color: #444;
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+.quick-reply-wrapper {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+.quick-reply-wrapper.visible {
+  max-height: 200px;
+  opacity: 1;
+  animation: slideInFromLeft 0.5s ease forwards;
+}
+
+.quick-reply {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+  padding: 12px 16px;
+  background: #1f1f1f00;
+  border-radius: 18px;
+  border: 1px solid #a6a6a6;
+  transition: all 0.3s ease;
+}
+
+.quick-reply input[type="text"] {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid #a6a6a6;
+  background-color: #11111100;
+  font-size: 14px;
+  color: var(--text);
+  outline: none;
+  min-width: 200px;
+  transition: all 0.2s ease;
+}
+
+.quick-reply input[type="text"]:focus {
+  border-color: #4c9aff;
+  background-color: #18181800;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+.quick-reply input[type="file"] {
+  display: none;
+}
+
+.file-attach {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.quick-reply button {
+  background-color: #22c55e;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 16px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+.quick-reply button:hover {
+  background-color: #16a34a;
+}
+
+.email-card.expanded .quick-reply {
+  max-height: 200px;
+  opacity: 1;
+  transform: translateY(0);
+  background-color: transparent;
+  margin-top: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+@keyframes slideInFromLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.reply-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: transparent;
+  border: none;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.reply-icon {
+  width: 90px;
+  height: 35px;
+  vertical-align: middle;
+}
+
+.send-button {
+  padding: 8px 20px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.send-button.sending {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.send-button .spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid white;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.send-button.sent {
+  background-color: #fdf3f300;
+}
+
+.send-button.sent .checkmark {
+  font-size: 18px;
+}
+
+.chat-icon-button {
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  margin-left: 8px;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.chat-icon-button:hover {
+  transform: scale(1.1);
+}
+
+.chat-icon {
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  display: block;
+}
+
+.icon-bar {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+  margin-left: auto;
+  transform: translateX(-120px) translateY(5px);
+}
+
+.dark .icon-bar {
+  display: flex;
+  filter: invert(1) brightness(1.2);
+  gap: 12px;
+  margin-top: 10px;
+  margin-left: auto;
+  transform: translateX(-120px) translateY(5px);
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dark .icon-btn {
+  background: rgba(255, 255, 255, 0);
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  margin-top: 10px;
+}
+
+
+
+@keyframes fadeInSlideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-100%);
+  }
+}
+
+.inbox-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.tabs {
+  display: flex;
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15);
+  padding: 0.75rem;
+  border-radius: 99px;
+}
+
+.tabs * {
+  z-index: 2;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 110px;
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 500;
+  border-radius: 99px;
+  cursor: pointer;
+  transition: color 0.15s ease-in;
+}
+
+.tab.notification {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.8rem;
+  height: 0.8rem;
+  position: absolute;
+  top: 10px;
+  left: 70%;
+  font-size: 10px;
+  margin-left: 0.75rem;
+  border-radius: 50%;
+  background-color: #e6eef9;
+  color: #333;
+  transition: 0.15s ease-in;
+}
+
+input[type="radio"]:checked + label.tab {
+  color: #185ee0;
+}
+
+input[type="radio"]:checked + label.tab > .notification {
+  background-color: #185ee0;
+  color: #fff;
+}
+
+input[id="radio-primary"]:checked ~ .glider {
+  transform: translateX(0);
+}
+
+input[id="radio-promotions"]:checked ~ .glider {
+  transform: translateX(100%);
+}
+
+input[id="radio-social"]:checked ~ .glider {
+  transform: translateX(200%);
+}
+
+input[id="radio-updates"]:checked ~ .glider {
+  transform: translateX(300%);
+}
+
+input[id="radio-forums"]:checked ~ .glider {
+  transform: translateX(400%);
+}
+
+.glider {
+  position: absolute;
+  display: flex;
+  height: 30px;
+  width: 110px;
+  background-color: #e6eef9;
+  z-index: 1;
+  border-radius: 99px;
+  transition: 0.25s ease-out;
+}
+
+.dark .tabs {
+  background-color: #333;
+  box-shadow: 0 0 1px 0 rgba(255, 255, 255, 0.15), 0 6px 12px 0 rgba(255, 255, 255, 0.15);
+}
+
+.dark .tab {
+  color: #ccc;
+}
+
+.dark input[type="radio"]:checked + label.tab {
+  color: #4c9aff;
+}
+
+.dark input[type="radio"]:checked + label.tab > .notification {
+  background-color: #4c9aff;
+  color: #fff;
+}
+
+.dark .glider {
+  background-color: #444;
+}
+
+input[type="radio"]:disabled + label.tab {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .inbox-controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+
+  .tabs {
+    transform: scale(0.8);
+  }
+
+  .refresh-button {
+    width: auto;
+    justify-content: flex-start;
+    padding-left: 12px;
+  }
+}
+
+.email-options-wrapper {
+  position: absolute;
+  top: 50%;
+  right: -60px;
+  transform: translateY(-50%);
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.email-card:hover .email-options-wrapper,
+.email-options-wrapper:hover {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: scale(0.95);
+  transform-origin: top right;
+  transition: transform 0.25s ease;
+}
+
+.dark .dropdown-menu {
+  background: rgba(51, 51, 51, 0.95);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.email-card:hover .dropdown-menu,
+.email-options-wrapper:hover .dropdown-menu {
+  transform: scale(1);
+  transform: translateX(70px);
+}
+
+.dropdown-menu button {
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+  width: 100%;
+}
+
+.dark .dropdown-menu button {
+  color: #ccc;
+}
+
+.dropdown-menu button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark .dropdown-menu button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
