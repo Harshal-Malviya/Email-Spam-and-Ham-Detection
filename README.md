@@ -11,7 +11,6 @@ A full‑stack Machine Learning web application that classifies emails/messages 
 - ✅ Flask REST API for predictions
 - ✅ Interactive React frontend
 - ✅ Ready for deployment
-- ✅ Secured file handling via `.gitignore`
 
 ---
 
