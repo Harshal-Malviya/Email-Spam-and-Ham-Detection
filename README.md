@@ -34,8 +34,48 @@ A full‑stack Machine Learning web application that classifies emails/messages 
 ---
 
 ## 📂 Project Structure
-
-EMAIL SPAM AND HAM DETECTION │ ├── backend/ │   ├── app.py │   ├── spam\_classifier.pkl │   ├── tfidf\_vectorizer.pkl │   ├── token.pickle │   ├── client\_secret.json │   ├── credentials.json │   ├── message.json │   ├── package.json │   └── package-lock.json │ ├── frontend/ │   ├── public/ │   └── src/ │       ├── components/ │       ├── styles/ │       ├── views/ │       ├── utils/ │       ├── App.js │       └── index.js │ ├── .gitignore ├── requirements.txt └── README.md
+```
+EMAIL SPAM AND HAM DETECTION
+│
+├── backend/
+│   ├── app.py
+│   ├── client_secret.json
+│   ├── credentials.json
+│   ├── message.json
+│   ├── spam_classifier.pkl
+│   ├── tfidf_vectorizer.pkl
+│   ├── token.pickle
+│   ├── package.json
+│   └── package-lock.json
+│
+├── frontend/
+│   ├── public/
+│   │   ├── favicon.ico
+│   │   ├── inboxbro.png
+│   │   ├── index.html
+│   │   ├── logo192.png
+│   │   ├── logo512.png
+│   │   ├── manifest.json
+│   │   └── robots.txt
+│   │
+│   └── src/
+│       ├── assets/
+│       ├── components/
+│       ├── styles/
+│       ├── utils/
+│       ├── views/
+│       ├── App.js
+│       ├── App.css
+│       ├── Inbox.jsx
+│       ├── Inbox.css
+│       ├── index.js
+│       ├── globals.css
+│       └── reportWebVitals.js
+│
+├── .gitignore
+├── requirements.txt
+└── README.md
+```
 
 ---
 
@@ -124,15 +164,6 @@ The included credential files are **ONLY for testing/demo purposes** and **do no
 - Email inbox integration
 - Multi‑language spam detection
 - Admin dashboard for monitoring
-
----
-
-## 👑 Developer
-
-**Harshal Malviya**
-
-- GitHub: [https://github.com/Harshal-Malviya](https://github.com/Harshal-Malviya)
-- Field: AI & Data Science
 
 ---
 
